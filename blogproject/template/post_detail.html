@@ -1,0 +1,28 @@
+<!-- blog/post_detail.html -->
+
+{% extends 'dashboard.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="mb-4">{{ post.post_title }}</h1>
+
+    <div class="card">
+        <img src="/{{post.Post_Image}}" class="card-img-top" alt="Post Image">
+        <div class="card-body">
+            <p class="card-text">{{ post.Post_Description }}</p>
+            <p class="card-text"><small >Created by: {{ post.Created_By.username }}</small></p>
+            <p class="card-text"><small >Created at: {{ post.Create_at }}</small></p>
+            <p class="card-text"><small >Views: {{ post.views }}</small></p>
+            <p class="card-text "><h1 class="text-center">Thanks For visit us</h1></p>
+            <p class="card-text"><h3 class="text-center">You can Earn Money but <a href="#">How?</a></h3></p>
+            <p class="card-text"><small class="text-muted">You can earn money by create blog</small></p>
+            <p class="card-text"><small class="text-muted"></small></p>
+            
+        </div>
+    </div>
+
+    <!-- Add comment section here -->
+
+</div>
+{% endblock %}

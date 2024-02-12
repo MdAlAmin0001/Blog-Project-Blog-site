@@ -1,0 +1,47 @@
+
+  {% extends "dashboard.html" %}
+  {% block content %}
+  
+  {% for i in pkey %}
+<div class="container mt-4">
+  <div class="card">
+      <a href="/{{i.Post_Image}}"><img src="/{{i.Post_Image}}" class="card-img-top" alt="Post Image"></a>
+      <div class="card-body">
+          <h5 class="card-title">{{i.Post_Title}}</h5>
+          <p class="card-text">{{i.Post_Description}}</p>
+          <p class="card-text"><small class="text-muted">Created by: {{i.Created_By}}</small></p>
+          <p class="card-text"><small class="text-muted">Created at: {{i.Create_at}}</small></p>
+
+
+          <div class="btn-group">
+            <form action="{% url 'permissioned' i.id %}" method="post">
+            {% csrf_token %}
+          
+            <button type="submit" class="btn btn-success">Approve Now</button>
+          
+          </form>
+    
+          <form action="{% url 'permissioned_denied' i.id %}" method="post">
+              {% csrf_token %}
+    
+              
+              <button type="submit" class="btn btn-danger">Cancel Post</button>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (for Bootstrap modal) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyLxEeAfeCk99R+5T8L+fR0JdOQ2F9XjpD"
+  crossorigin="anonymous"></script>
+
+
+{% endfor %}
+{% endblock content %}

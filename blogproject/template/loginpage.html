@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #23242a;
+      color: #fff;
+      margin: 0;
+  }
+
+  .container {
+      position: relative;
+      width: 80%;
+      max-width: 400px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .container::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: inherit;
+      border-radius: 12px;
+      z-index: -1;
+      filter: blur(20px);
+  }
+
+  h2 {
+      color: #fff;
+      font-weight: 500;
+      text-align: center;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+  }
+
+  .inputbox {
+      margin-bottom: 20px;
+  }
+
+  .inputbox input,
+  .inputbox label {
+      width: 100%;
+      display: block;
+      margin-top: 10px;
+      padding: 10px;
+      background: transparent;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      color: #fff;
+      font-size: 1em;
+      letter-spacing: 0.5em;
+      border-bottom: 1px solid #fff;
+      transition: 0.3s;
+  }
+
+  .inputbox input:focus,
+  .inputbox input:valid {
+      border-bottom: 1px solid #45f3ff;
+  }
+
+  .radio-options {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 10px;
+  }
+
+  .radio-options input[type="radio"] {
+      display: none;
+  }
+
+  .radio-options label {
+      background: #1c1c1c;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+  }
+
+  .radio-options input[type="radio"]:checked + label {
+      background: #45f3ff;
+  }
+
+  .links {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .links a {
+      font-size: 0.75em;
+      color: #8f8f8f;
+      text-decoration: none;
+  }
+
+  .links a:hover,
+  .links a:nth-child(2) {
+      color: #fff;
+  }
+
+  input[type="submit"] {
+      border: none;
+      outline: none;
+      padding: 10px 20px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.9em;
+      border-radius: 4px;
+      font-weight: 600;
+  }
+
+  input[type="submit"]:active {
+      opacity: 0.8;
+  }
+
+  /* Add additional styles for text and emojis */
+  .additional-info {
+      margin-top: 20px;
+      text-align: center;
+  }
+
+  .blog-post-emoji {
+      font-size: 2em;
+      margin-right: 5px;
+  }
+  </style>
+  <title>Login Page</title>
+</head>
+<body>
+  <div class="container" >
+  <form id="loginForm" method = "POST">
+    {% csrf_token %}
+    <h1 style="text-align: center;">Login</h1>
+    <div class="inputbox">
+      <label for="username">Username</label>
+      <input type="text" name="username" required="required" id="username">
+    </div>
+
+    <div class="inputbox">
+      <label for="password">Password</label>
+      <input type="password" name="password" required="required" id="password">
+      
+  </div>
+
+  <input type="submit" value="Sign Up">
+    <a href="{% url 'forgetpassword' %}"><p>Forget Password?</p></a>
+    <a href="{% url 'signuppage' %}"><p>no account?</p></a>
+  </form>
+</div>
+</body>
+</html>

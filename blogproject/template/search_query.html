@@ -1,0 +1,20 @@
+{% for i in sq %}
+  <div class="blog-post">
+    <div class="post-header">
+        <span class="created-by">Created by:{{i.Created_By}}</span>
+        <span class="created-at">Created at:{{i.Create_at}}</span>
+    </div>
+    <h1 class="post-title">{{i.Post_Title}}</h1>
+    <div class="post-image">
+        <a href="/{{i.Post_Image}}"><img src="/{{i.Post_Image}}" alt="Post Image"></a>
+    </div>
+    <p class="post-description">
+        
+        {% if i.Post_Description|length > 100 %}
+                {{ i.Post_Description|slice:":100" }}
+                <a href="" onclick="toggleDescription()">See more</a>
+        {% endif %}
+    </p>
+</div>
+
+{% endfor %}

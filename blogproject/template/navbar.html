@@ -1,0 +1,26 @@
+{% block content %}
+
+
+<nav>
+    
+    <a href="{% url 'profile' %}"><button class="btn btn-outline-primary"><img src="/{{user.profile_image}}" style="height:40px;width:40px;border-radius: 50%; text-align: center;"></button></a>
+    <a href="{% url 'dashboard' %}"><button class="btn btn-outline-primary">Feeds</button></a>
+    {% if request.user.user_type == 'admin' %}
+    <a href="{% url 'permission_post' %}"><button class="btn btn-outline-primary">Post Approve</button></a>
+    {% endif %}
+    {% if request.user.user_type == 'blogger' %}
+    <a href="{% url 'uploadpost' %}"><button class="btn btn-outline-primary">Upload Post</button></a>
+    {% endif %}
+    <a href="{% url 'logoutpage' %}"><button class="btn btn-outline-danger">Logout</button></a>
+  
+
+        
+      <form method="POST" action="{% url 'search_query' %}">
+        {% csrf_token %}
+    <input  type="text" name="search" id="searchBar" placeholder="Search...">
+    <button type="submit" class="btn btn-outline-primary">Search</button>
+  </form>
+    
+  
+</nav>
+{% endblock content %}

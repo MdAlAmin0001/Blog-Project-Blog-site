@@ -1,0 +1,29 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<div class="profile-card">
+    <img src="/{{user.profile_image}}" alt="Profile Image" class="profile-image">
+    <div class="details">
+      <h4>{{user.display_name}}</h4>
+      <p>{{user.username}}</p>
+      <p>{{user.email}}</p>
+      <p>{{user.user_type}}</p>
+    </div>
+    <a href="{% url 'profile_edit' %}"><button class="btn btn-primary btn-update">Update Profile</button></a>
+  </div>
+
+  {% for i in bp %}
+          <div class="card mb-4">
+              <img src="/{{i.Post_Image}}" class="card-img-top" alt="Post Image">
+              <div class="card-body">
+                  <h5 class="card-title">{{i.Post_Title}}</h5>
+                  <p class="card-text">{{ i.Post_Description }}</p>
+                  <p class="card-text">Created by: {{i.Created_By}}</p>
+                  <a href="{% url 'post_detail' i.id %}" class="btn btn-primary">Read More</a>
+                  {% if request.user.user_type == 'admin' %}
+                  <a href="{% url 'deletepost_feed' i.id %}" class="btn btn-danger">Delete</a>
+                  {% endif %}
+              </div>
+          </div>
+      {% endfor %}
+  
+{% endblock %}
